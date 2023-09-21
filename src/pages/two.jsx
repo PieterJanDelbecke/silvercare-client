@@ -25,6 +25,8 @@ const PageTwo = () => {
       <HomeLink to={"/"}>HOME</HomeLink>
       <Header>Page Two</Header>
       <SubHeader>{context.color}</SubHeader>
+      <p>Firstname: {context.firstName}</p>
+      <p>Lastname: {context.lastName}</p>
     </>
   );
 };
