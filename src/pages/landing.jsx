@@ -42,11 +42,35 @@ const LandingPage = () => {
     navigate("/two");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("firstName: ", e.target.firstName.value);
+    console.log("lastName: ", e.target.lastName.value);
+    setContext({
+      ...context,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+    });
+    navigate("/two");
+  };
+
   return (
     <>
       <Header>Landing Page</Header>
       <ButtonBlue onClick={handleBlueClick}>BLUE</ButtonBlue>
       <ButtonGreen onClick={handleGreenClick}>GREEN</ButtonGreen>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="fistName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" />
+        </div>
+        <div>
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" />
+        </div>
+        <button type="submit">SUBMIT</button>
+      </form>
     </>
   );
 };
