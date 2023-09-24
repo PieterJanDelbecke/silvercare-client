@@ -9,22 +9,22 @@ import PageOne from "./pages/one.jsx";
 import PageTwo from "./pages/two.jsx";
 
 function App() {
-  const [context, setContext] = useState({});
+	const [context, setContext] = useState({});
 
-  return (
-    <>
-      <Context.Provider value={{ context, setContext }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/one" element={<PageOne />} />
-            <Route path="/two" element={<PageTwo />} />
-          </Routes>
-        </BrowserRouter>
-      </Context.Provider>
-    </>
-  );
+	return (
+		<>
+			<Context.Provider value={{ context, setContext }}>
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<LandingPage />} />
+						<Route path="/signup" element={<SignUpPage />} />
+						<Route path="/one" element={<PageOne />} />
+						<Route path="/two" element={<PageTwo />} />
+					</Routes>
+				</BrowserRouter>
+			</Context.Provider>
+		</>
+	);
 }
 
 export default App;
