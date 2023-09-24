@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
+import axios from "axios";
 
 import Context from "../context/context";
 
@@ -19,6 +20,18 @@ const ButtonGreen = styled.button`
 const LandingPage = () => {
   const { context, setContext } = useContext(Context);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await axios.get("http://localhost:3000/users");
+        console.log("RESPONSE:", response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getData();
+  }, []);
 
   const handleBlueClick = (event) => {
     event.preventDefault();
