@@ -9,12 +9,16 @@ const Header = styled.h1`
   color: red;
 `;
 
-const ButtonBlue = styled.button`
+const BlueBtn = styled.button`
   background-color: blue;
 `;
 
-const ButtonGreen = styled.button`
+const GreenBtn = styled.button`
   background-color: green;
+`;
+
+const SignUpBtn = styled.button`
+  background-color: orange;
 `;
 
 const LandingPage = () => {
@@ -55,24 +59,43 @@ const LandingPage = () => {
     navigate("/two");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("firstName: ", e.target.firstName.value);
-    console.log("lastName: ", e.target.lastName.value);
     setContext({
       ...context,
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
     });
+
+    const { data } = await axios.post(
+      "http://localhost:3000/users/new",
+      {
+        firstName: e.target.firstName.value,
+        lastName: e.target.lastName.value,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("Data", data);
     navigate("/two");
+  };
+
+  const handleSignUp = () => {
+    navigate("/signup");
   };
 
   return (
     <>
       <Header>Landing Page</Header>
-      <ButtonBlue onClick={handleBlueClick}>BLUE</ButtonBlue>
-      <ButtonGreen onClick={handleGreenClick}>GREEN</ButtonGreen>
+      <div>
+        <SignUpBtn onClick={handleSignUp}>Sign Up</SignUpBtn>
+      </div>
+      <BlueBtn onClick={handleBlueClick}>BLUE</BlueBtn>
+      <GreenBtn onClick={handleGreenClick}>GREEN</GreenBtn>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="fistName">First Name:</label>

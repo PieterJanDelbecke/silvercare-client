@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "./context/context.js";
 
 import LandingPage from "./pages/landing.jsx";
+import SignUpPage from "./pages/sign-up.jsx";
 import PageOne from "./pages/one.jsx";
 import PageTwo from "./pages/two.jsx";
 
@@ -16,6 +17,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
             <Route path="/one" element={<PageOne />} />
             <Route path="/two" element={<PageTwo />} />
           </Routes>
