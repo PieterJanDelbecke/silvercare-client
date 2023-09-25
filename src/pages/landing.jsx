@@ -69,7 +69,7 @@ const LandingPage = () => {
 		});
 
 		const { data } = await axios.post(
-			"http://localhost:3000/users/new",
+			"http://localhost:3000/users/signup",
 			{
 				firstName: e.target.firstName.value,
 				lastName: e.target.lastName.value,
@@ -78,7 +78,7 @@ const LandingPage = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-			},
+			}
 		);
 		console.log("Data", data);
 		navigate("/two");

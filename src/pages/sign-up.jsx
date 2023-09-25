@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Header = styled.h1`
 	color: red;
@@ -32,8 +33,14 @@ const SignUpPage = () => {
 			.required("Confirm Password is required"),
 	});
 
-	const onSubmit = (values) => {
-		console.log(values);
+	const onSubmit = async (values) => {
+		console.log("==> VALUES:", values);
+		const { data } = await axios.post("http://localhost:3000/users/signup", values, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		console.log("==> DATA: ", data);
 	};
 
 	return (
