@@ -5,8 +5,7 @@ import Context from "./context/context.js";
 
 import LandingPage from "./pages/landing.jsx";
 import SignUpPage from "./pages/sign-up.jsx";
-import PageOne from "./pages/one.jsx";
-import PageTwo from "./pages/two.jsx";
+import SignInPage from "./pages/sign-in.jsx";
 
 function App() {
 	const [context, setContext] = useState({});
@@ -18,8 +17,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<LandingPage />} />
 						<Route path="/signup" element={<SignUpPage />} />
-						<Route path="/one" element={<PageOne />} />
-						<Route path="/two" element={<PageTwo />} />
+						<Route path="/signin" element={<SignInPage />} />
 					</Routes>
 				</BrowserRouter>
 			</Context.Provider>
