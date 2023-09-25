@@ -1,10 +1,12 @@
-// import {useState, useEffect} from "react";
+import { useContext, useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+
+import Context from "../context/context";
 
 const Header = styled.h1`
 	color: red;
@@ -16,6 +18,8 @@ const HomeLink = styled(Link)`
 `;
 
 const SignUpPage = () => {
+	const { context, setContext } = useContext(Context);
+	// const { item, setItem } = useState({ message: "Hello World" });
 	const navigate = useNavigate();
 
 	const initialValues = {
@@ -44,6 +48,19 @@ const SignUpPage = () => {
 			},
 		});
 		console.log("==> DATA: ", data);
+
+		if (data.id) {
+			const { id, firstName, lastName, email } = data;
+			setContext({
+				...context,
+				firstName,
+				lastName,
+				email,
+				id,
+			});
+			navigate("/main");
+		}
+		setItem(data);
 	};
 
 	const handleSignIn = () => {
