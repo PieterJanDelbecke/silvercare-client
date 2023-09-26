@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -17,9 +17,13 @@ const HomeLink = styled(Link)`
 	text-decoration: none;
 `;
 
+const Warning = styled.p`
+	color: red;
+`;
+
 const SignUpPage = () => {
 	const { context, setContext } = useContext(Context);
-	// const { item, setItem } = useState({ message: "Hello World" });
+	const [message, setMessage] = useState(null);
 	const navigate = useNavigate();
 
 	const initialValues = {
@@ -59,8 +63,9 @@ const SignUpPage = () => {
 				id,
 			});
 			navigate("/main");
+		} else {
+			setMessage(data.message);
 		}
-		setItem(data);
 	};
 
 	const handleSignIn = () => {
@@ -103,6 +108,7 @@ const SignUpPage = () => {
 					</Form>
 				</Formik>
 			</div>
+			{message && <Warning>{message}</Warning>}
 			<h4>Already Signed Up?</h4>
 			<div>
 				<button type="button" onClick={handleSignIn}>
