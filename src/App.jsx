@@ -7,6 +7,7 @@ import LandingPage from "./pages/landing.jsx";
 import SignUpPage from "./pages/sign-up.jsx";
 import SignInPage from "./pages/sign-in.jsx";
 import MainPage from "./pages/main.jsx";
+import OnBoardingPage from "./pages/on-boarding.jsx";
 
 function App() {
 	const [context, setContext] = useState({});
@@ -20,6 +21,7 @@ function App() {
 						<Route path="/signup" element={<SignUpPage />} />
 						<Route path="/signin" element={<SignInPage />} />
 						<Route path="/main" element={<MainPage />} />
+						<Route path="/onboarding" element={<OnBoardingPage />} />
 					</Routes>
 				</BrowserRouter>
 			</Context.Provider>
