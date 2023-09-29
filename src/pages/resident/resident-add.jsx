@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -13,7 +13,16 @@ const Title = styled.h3`
 	color: blue;
 `;
 
-const OnBoardingPage = () => {
+const HomeLink = styled(Link)`
+	color: purple;
+	text-decoration: none;
+`;
+
+const ResidentAddPage = () => {
+	const [residentFirstName, setResidentFirstName] = useState("");
+	const [residentLastName, setResidentLastName] = useState("");
+	const [residentId, setResidentId] = useState("");
+
 	const initialValues = {
 		firstName: "",
 		lastName: "",
@@ -34,11 +43,18 @@ const OnBoardingPage = () => {
 			},
 		});
 		console.log("==> DATA: ", data);
+		setResidentFirstName(data.firstName);
+		setResidentLastName(data.lastName);
+		setResidentId(data.id);
+		if (data.id) {
+			Navigate("/resident/form");
+		}
 	};
 
 	return (
 		<>
-			<Header>On Boarding - Assessment</Header>
+			<HomeLink to={"/"}>HOME</HomeLink>
+			<Header>On Boarding</Header>
 			<Title>New Resident</Title>
 			<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
 				<Form>
@@ -65,4 +81,4 @@ const OnBoardingPage = () => {
 	);
 };
 
-export default OnBoardingPage;
+export default ResidentAddPage;
