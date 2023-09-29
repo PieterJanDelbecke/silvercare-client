@@ -6,6 +6,7 @@ const MainPage = () => {
 		<>
 			<Link to="/">HOME</Link>
 			<div>MainPage</div>
+			<Link to="/onboarding">ON BOARDING</Link>
 		</>
 	);
 };
