@@ -19,6 +19,7 @@ const HomeLink = styled(Link)`
 `;
 
 const ResidentAddPage = () => {
+	const navigate = useNavigate();
 	const [residentFirstName, setResidentFirstName] = useState("");
 	const [residentLastName, setResidentLastName] = useState("");
 	const [residentId, setResidentId] = useState("");
@@ -47,7 +48,7 @@ const ResidentAddPage = () => {
 		setResidentLastName(data.lastName);
 		setResidentId(data.id);
 		if (data.id) {
-			Navigate("/resident/form");
+			navigate("/resident/form");
 		}
 	};
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const ResidentFormPage = () => {
+	const residentId = "77de6c03-7abc-4003-81e3-952d7425424a";
 	const initialValues = {
 		sons: 0,
 		daughters: 0,
@@ -21,12 +23,18 @@ const ResidentFormPage = () => {
 		fatherDeceased: Yup.boolean().required("required"),
 	});
 
-	const onSubmit = (values) => {
+	const onSubmit = async (values) => {
 		console.log("==> VALUES:", values);
-	};
-
-	const onReset = () => {
-		console.log("RESET");
+		const { data } = await axios.post(
+			"http://localhost:3000/resident/family",
+			{ ...values, residentId },
+			{
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}
+		);
+		console.log("==> DATA: ", data);
 	};
 
 	return (
